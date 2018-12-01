@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
-  has_secure_password
   has_many :foods
+
+  has_secure_password
+  validates :username, presence: true
+  validates :username, uniqueness: { case_sensitive: false }
+  validates :name, presense: true
 end
