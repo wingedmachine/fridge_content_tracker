@@ -1,16 +1,18 @@
-models
-  user (has many food)
-    username
-    password
-    name
-  food (belongs to user)
-    name
-    date created
-    user_id
+-models
+-  user (has many food)
+-    username
+-    password
+-    name
+-  food (belongs to user)
+-    name
+-    date created
+-    user_id
 
 view
+-  layout
+
   signup
-  login - this is root
+-  login - this is root
   food/index - all food
   food/create
   food/edit - includes delete button
@@ -19,10 +21,19 @@ view
 
 controller
   application
-    get /
-    helpers
-      current_user
-      logged_in?
+-    get /
+-    helpers
+-      current_user
+-      logged_in?
+-  user
+-    get /signup
+-    post /signup
+-    get /login
+-    post /login
+-    get /logout
+-
+-    get /users
+-    get /users/:username
   food
     get /food
     post /food
@@ -31,12 +42,3 @@ controller
     put /food/:id
     delete /food/:id
     get /food/:id/edit
-  user
-    get /signup
-    post /signup
-    get /login
-    post /login
-    get /logout
-
-    get /users
-    get /users/:username
