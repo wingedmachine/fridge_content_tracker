@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-      @user = User.new(params[:user])
-      if @user.save
-        session[:user_id] = @user.id
+      user = User.new(params[:user])
+      if user.save
+        session[:user_id] = user.id
         redirect to '/foods'
       else
         # messages here
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   post '/login' do
     user = User.find_by(:username => params[:username])
-    if user && user.authenticate(params[:password])
+    if user&.authenticate(params[:password])
       session[:user_id] = user.id
       redirect to '/foods'
     else
@@ -42,10 +42,17 @@ class UsersController < ApplicationController
     redirect '/'
   end
 
+  get '/users' do
+    redirect '/login' unless logged_in?
+
+    @users = User.all
+    erb :'/users/index'
+  end
+
   get '/users/:username' do
     redirect '/login' unless logged_in?
 
     @user = User.find_by(username: params[:username])
-    erb :'users/show'
+    erb :'/users/show'
   end
 end
