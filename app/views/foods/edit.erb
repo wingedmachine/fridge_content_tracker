@@ -1,0 +1,10 @@
+<form action="/foods/<%= @food.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for"name">Name: </label>
+  <input name="name" type="text" value="<%= @food.name %>"><br>
+  <input type="submit" value="Edit food">
+</form>
+<form action="/foods/<%= @food.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Remove from fridge">
+</form>

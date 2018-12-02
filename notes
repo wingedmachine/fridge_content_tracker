@@ -7,20 +7,20 @@
 -    name
 -    date created
 -    user_id
-
-view
+-
+-view
 -  layout
-
-  signup
+-
+-  signup
 -  login - this is root
-  food/index - all food
-  food/create
-  food/edit - includes delete button
-  food/show
-  user/show - shows their food
-
-controller
-  application
+-  food/index - all food
+-  food/create
+-  food/edit - includes delete button
+-  food/show
+-  user/show - shows their food
+-
+-controller
+-  application
 -    get /
 -    helpers
 -      current_user

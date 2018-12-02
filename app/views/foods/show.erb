@@ -1,0 +1,8 @@
+<h1><%= @food.name %></h1>
+<ul>
+  <li>Added to the fridge by: <%= @food.user.name %></li>
+  <li>At: <%= @food.datetime_created %></li>
+</ul>
+<% if current_user.id == @food.user.id %>
+  <a href="/foods/<%= @food.id %>/edit">Edit this food</a>
+<% end %>

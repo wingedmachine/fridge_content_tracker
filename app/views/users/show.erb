@@ -1,0 +1,8 @@
+<h1><%= @user.name %>'s foods</h1>
+<ul>
+  <% @user.foods.each do |food| %>
+    <li><a href="/foods/<%= food.id %>"><%= food.name %></a> (<%= food.datetime_created %>)</li>
+  <% end %>
+</ul>
+
+<form action="/foods/new" method="get"><input type="submit" value="Add something to the fridge"></form>

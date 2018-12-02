@@ -1,0 +1,9 @@
+<h1>People with food in the fridge</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <% next if user.foods.size == 0 %>
+
+    <li><a href="/users/<%= user.username %>"><%= user.name %></li>
+  <% end %>
+</ul>

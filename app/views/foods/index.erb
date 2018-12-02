@@ -1,0 +1,13 @@
+<h1>What's in the fridge?</h1>
+
+<% if @foods.size > 0 %>
+  <ul>
+    <% @foods.each do |food| %>
+      <li><a href="/foods/<%= food.id %>"><%= food.user.name %>'s <%= food.name %></a> (<%= food.datetime_created %>)</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>It's empty.</p>
+<% end %>
+
+<form action="/foods/new" method="get"><input type="submit" value="Add something to the fridge"></form>
