@@ -3,6 +3,6 @@ class Food < ActiveRecord::Base
 
   validates :name, presence: true
   validates :name, uniqueness: { scope: :user_id, case_sensitive: false }
-  validates :user_id, presense: true
+  validates :user_id, presence: true
   validates_associated :user
 end
