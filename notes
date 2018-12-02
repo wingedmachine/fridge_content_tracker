@@ -34,11 +34,11 @@ controller
 -
 -    get /users
 -    get /users/:username
-  food
-    get /food
-    post /food
-    get /food/new
-    get /food/:id
-    put /food/:id
-    delete /food/:id
-    get /food/:id/edit
+-  food
+-    get /food
+-    post /food
+-    get /food/new
+-    get /food/:id
+-    put /food/:id
+-    delete /food/:id
+-    get /food/:id/edit

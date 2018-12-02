@@ -43,6 +43,8 @@ class UsersController < ApplicationController
   end
 
   get '/users/:username' do
+    redirect '/login' unless logged_in?
+
     @user = User.find_by(username: params[:username])
     erb :'users/show'
   end
