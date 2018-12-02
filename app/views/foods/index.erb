@@ -3,7 +3,7 @@
 <% if @foods.size > 0 %>
   <ul>
     <% @foods.each do |food| %>
-      <li><a href="/foods/<%= food.id %>"><%= food.user.name %>'s <%= food.name %></a> (<%= food.datetime_created %>)</li>
+      <li><a href="/foods/<%= food.id %>"><%= food.user.name %>'s <%= food.name %></a> (<%= food.when_fridged %>)</li>
     <% end %>
   </ul>
 <% else %>

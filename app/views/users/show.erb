@@ -1,7 +1,7 @@
 <h1><%= @user.name %>'s foods</h1>
 <ul>
   <% @user.foods.each do |food| %>
-    <li><a href="/foods/<%= food.id %>"><%= food.name %></a> (<%= food.datetime_created %>)</li>
+    <li><a href="/foods/<%= food.id %>"><%= food.name %></a> (<%= food.when_fridged %>)</li>
   <% end %>
 </ul>
 
