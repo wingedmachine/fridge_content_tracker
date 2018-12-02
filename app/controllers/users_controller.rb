@@ -13,7 +13,8 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect to '/foods'
       else
-        # messages here
+        messages = user.errors.messages
+        flash[:message] = messages.map { |k,v| "#{k} #{v.first}" }.to_sentence
         redirect '/signup'
       end
   end
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect to '/foods'
     else
-      # messges here
+      flash[:message] = "Incorrect username or password"
       redirect to '/login'
     end
   end
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
   get '/users' do
     redirect '/login' unless logged_in?
 
-    @users = User.all
+    @users = User.all.select { |user| user.foods.size > 0 }
     erb :'/users/index'
   end
 

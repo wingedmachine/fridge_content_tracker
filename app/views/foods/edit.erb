@@ -1,3 +1,5 @@
+<%= flash[:message] %>
+
 <form action="/foods/<%= @food.id %>" method="post">
   <input type="hidden" name="_method" value="put">
   <label for"name">Name: </label>

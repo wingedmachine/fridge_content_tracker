@@ -13,7 +13,8 @@ class FoodsController < ApplicationController
     if food.save
       redirect "/foods/#{food.id}"
     else
-      # messages here
+      messages = food.errors.messages
+      flash[:message] = messages.map { |k,v| "#{k} #{v.first}" }.to_sentence
       redirect '/foods/new'
     end
   end
@@ -41,7 +42,8 @@ class FoodsController < ApplicationController
     if food.save
       redirect "/foods/#{params[:id]}"
     else
-      #messages here
+      messages = food.errors.messages
+      flash[:message] = messages.map { |k,v| "#{k} #{v.first}" }.to_sentence
       redirect "/foods/:id/edit"
     end
   end
