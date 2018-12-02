@@ -1,7 +1,8 @@
-class UsersController < ApplicationController
+class FoodsController < ApplicationController
   get '/foods' do
     redirect '/login' unless logged_in?
 
+    @foods = Food.all
     erb :'/foods/index'
   end
 
@@ -26,12 +27,14 @@ class UsersController < ApplicationController
   get '/foods/:id' do
     redirect '/login' unless logged_in?
 
+    @user == current_user
+    @food = Food.find(params[:id])
     erb :'/foods/show'
   end
 
   put '/foods/:id' do
     redirect '/login' unless logged_in?
-    redirect "/foods/#{params[:id]}" unless current_user.id == Food.find(params[:id].user.id)
+    redirect "/foods/#{params[:id]}" unless current_user.id == Food.find(params[:id]).user.id
 
     food = Food.find(params[:id])
     food.name = params[:name]
@@ -45,15 +48,17 @@ class UsersController < ApplicationController
 
   delete '/foods/:id' do
     redirect '/login' unless logged_in?
-    redirect "/foods/#{params[:id]}" unless current_user.id == Food.find(params[:id].user.id)
+    redirect "/foods/#{params[:id]}" unless current_user.id == Food.find(params[:id]).user.id
 
     Food.find(params[:id]).delete
+    redirect "users/#{current_user.username}"
   end
 
   get '/foods/:id/edit' do
     redirect '/login' unless logged_in?
-    redirect "/foods/#{params[:id]}" unless current_user.id == Food.find(params[:id].user.id)
+    redirect "/foods/#{params[:id]}" unless current_user.id == Food.find(params[:id]).user.id
 
-    erb '/foods/edit'
+    @food = Food.find(params[:id])
+    erb :'/foods/edit'
   end
 end
